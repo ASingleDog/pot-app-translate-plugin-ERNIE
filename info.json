@@ -12,18 +12,18 @@
       "display": "模型",
       "type": "select",
       "options": {
-        "ERNIE-Speed-8K": "ERNIE-Speed-8K(免费)",
-        "ERNIE-Speed-128K": "ERNIE-Speed-128K(免费)",
-        "ERNIE-Lite-8K": "ERNIE-Lite-8K(免费)",
-        "ERNIE-4.0-Turbo-8K": "ERNIE-4.0-Turbo-8K"
+        "ernie_speed": "ERNIE-Speed-8K(免费)",
+        "ernie-speed-128k": "ERNIE-Speed-128K(免费)",
+        "ernie-lite-8k": "ERNIE-Lite-8K(免费)",
+        "ernie-4.0-turbo-8k": "ERNIE-4.0-Turbo-8K(旗舰)"
       }
     },
-    { "key": "system_prompt", "display": "System Prompt", "type": "input" },
-    { "key": "prompts", "display": "Json Prompt", "type": "input" },
-    { "key": "temperature", "display": "temperature", "type": "input" },
-    { "key": "top_p", "display": "top_p", "type": "input" },
-    { "key": "penalty_score", "display": "penalty_score", "type": "input" },
-    { "key": "request_url", "display": "自定义请求地址", "type": "input" }
+    { "key": "system_prompt", "display": "System Prompt(选填)", "type": "input" },
+    { "key": "prompts", "display": "Json Prompt(选填)", "type": "input" },
+    { "key": "temperature", "display": "temperature(选填)", "type": "input" },
+    { "key": "top_p", "display": "top_p(选填)", "type": "input" },
+    { "key": "penalty_score", "display": "penalty_score(选填)", "type": "input" },
+    { "key": "request_url", "display": "自定义请求地址(选填)", "type": "input" }
   ],
   "language": {
     "auto": "Simplified Chinese(简体中文)",
