@@ -1,7 +1,8 @@
 # Pot-App 百度文心大模型翻译插件
 
 > 模板：https://github.com/TheDavidDelta/lingva-translate
-> 参考：https://github.com/syaoranwe/pot-app-translate-plugin-baidu-ernie-free
+>  
+> 转写自：https://github.com/syaoranwe/pot-app-translate-plugin-baidu-ernie-free
 
 ## (转自模板)插件编写指南
 
