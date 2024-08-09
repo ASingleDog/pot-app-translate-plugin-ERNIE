@@ -1,8 +1,9 @@
-# Pot-App 翻译插件模板仓库 (以 [Lingva](https://github.com/TheDavidDelta/lingva-translate) 为例)
+# Pot-App 百度文心大模型翻译插件
 
-### 此仓库为模板仓库，编写插件时可以直接由此仓库创建插件仓库
+> 模板：https://github.com/TheDavidDelta/lingva-translate
+> 参考：https://github.com/syaoranwe/pot-app-translate-plugin-baidu-ernie-free
 
-## 插件编写指南
+## (转自模板)插件编写指南
 
 ### 1. 插件仓库创建
 
