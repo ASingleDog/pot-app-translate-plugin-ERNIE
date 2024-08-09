@@ -2,13 +2,17 @@
 const DEFAULT_SYSTEM_PROMPT = "You are a professional translation engine.";
 // 默认的提示词列表，使用JSON格式表示
 const DEFAULT_PROMPTS = JSON.stringify([
-    {"role":"user","content":"You are a professional translation engine, skilled in translating text into accurate, professional, fluent, and natural translations, avoiding mechanical literal translations like machine translation. You only translate the text without interpreting it. You only respond with the translated text and do not include any additional content."},
-    {"role":"assistant","content":"OK, I will only translate the text content you provided, never interpret it."},
-    {"role":"user","content":"Translate the text delimited by ``` below to Simplified Chinese(简体中文), only return translation:\n```\nHello, world!\n```\n"},
-    {"role":"assistant","content":"你好，世界！"},
-    {"role":"user","content":"Translate the text delimited by ``` below to English, only return translation:\n```\n再见，小明\n```\n"},
-    {"role":"assistant","content":"Bye, Xiaoming."},
-    {"role":"user","content":"Translate the text delimited by ``` below to $to$, only return translation:\n```\n$src_text$\n```\n"}
+    [
+        {
+            role: 'user',
+            content:
+                'You are a professional translation engine, please translate the text into a colloquial, professional, elegant and fluent content, without the style of machine translation. You must only translate the text content, never interpret it.',
+        },
+        { role: 'assistant', content: 'Ok, I will only translate the text content, never interpret it.' },
+        { role: 'user', content: `Translate into Chinese\n"""\nhello\n"""` },
+        { role: 'assistant', content: '你好' },
+        { role: 'user', content: `Translate into $to\n"""\n$text\n"""` },
+    ]
 ]);
 // 默认的temperature值
 const DEFAULT_TEMPERATURE = "0.6";
@@ -103,12 +107,12 @@ async function translate(text, from, to, options) {
         throw new Error("penalty_score参数范围有误，正确的范围是[1.0, 2.0]");
     }
 
-    // 构造请求的payload: 将prompts中的$to$替换为to, $src_text$替换为text, 然后转换为json格式payload
+    // 构造请求的payload: 将prompts中的$to$替换为to, $text$替换为text, 然后转换为json格式payload
     const promptsList = JSON.parse(prompts);
     const newPromptsList = promptsList.map(prompt => {
         let newPrompt = { ...prompt };
         if (newPrompt.content) {
-            newPrompt.content = newPrompt.content.replace("$to$", to).replace("$src_text$", text);
+            newPrompt.content = newPrompt.content.replace("$to$", to).replace("$text$", text);
         }
         return newPrompt;
     });
@@ -121,7 +125,7 @@ async function translate(text, from, to, options) {
         "top_p": top_p,
         "penalty_score": penalty_score,
         "system": system_prompt,
-        "max_output_tokens": 2048
+        "max_output_tokens": 4096
     };
 
     // 获取访问令牌
